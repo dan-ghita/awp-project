@@ -6,4 +6,28 @@
     <p>{{ post.date_added }}</p>
     <p>{{ post.text }}</p>
   </div>
+
+  <br>
+  <br>
+  <br>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Post">
+  </form>
+
+
+  <h3>Comments:</h3>
+  {% for comment in comments %}
+    <div class="user-post-comment">
+      <p>{{ comment.author }}</p>
+      <p>{{ comment.date_added }}</p>
+      <p>{{ comment.text }}</p>
+      <hr>
+    </div>
+  {% endfor %}
+
+<a href="{% url 'index' %}">Back</a>
 {% endblock %}
+
